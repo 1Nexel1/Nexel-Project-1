@@ -1,0 +1,29 @@
+body{
+  padding: 5px;
+  
+}
+.cartlayout{
+  border: 1px solid #e4bd86;
+  padding: 15px;
+  border-radius: 7px;
+  
+}
+#cartlist{
+  overflow-y: auto;
+  height: 790px;
+  margin-top: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 24px;
+  color: antiquewhite;
+}
+.wish{
+  font-weight: bold;
+  margin: 0;
+}
+p{
+  color: antiquewhite;
+}
+.order{
+  grid-template-columns: 1fr;
+}

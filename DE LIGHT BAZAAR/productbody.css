@@ -1,0 +1,282 @@
+*{
+  -webkit-tap-highlight-color: transparent;
+}
+body{
+  box-sizing: border-box;
+  background: linear-gradient(0deg,
+    var(--L-dark),
+    var(--g-dark),
+    var(--g-gold)
+  );
+  
+  padding: 10px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  margin: 0;
+}
+/*::selection{
+  background: var(--gold);
+  color: black;
+}*/
+:root{
+  --L-dark: #2d2d2d;
+  --g-dark: #1f1c17;
+  --g-gold: #0e0d0b;
+}
+/*.dif{
+  border: 2px solid transparent;
+  background: linear-gradient(135deg,
+    var(--L-dark),
+    var(--g-dark),
+    var(--g-gold)
+  ) padding-box,
+  
+  linear-gradient(135deg, var(--L-dark), var(--g-dark), var(--g-gold) border-box);
+}
+*/
+.product3{
+  padding: 20px;
+  background: linear-gradient(135deg,
+    var(--light-gold), 45%,
+    var(--g-dark), 85%,
+    var(--purple) 100%
+  );
+
+}
+
+
+.imgprd{
+  width:100%;
+  height: 350px;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 5px;
+}
+:root{
+  --light-gold:#deb486;
+  --dark-gold:#bc9048;
+  --gold:#e4bc86;
+  --purple:#7b2d4a;
+}
+
+.details{
+  padding: 20px;
+  background: linear-gradient(135deg,
+    var(--light-gold),
+    black, 60%,
+    var(--purple)
+  );
+  margin-top: 0px;
+}
+p{
+  color: #e5e5e5;
+  font-size: 20px;
+  font-weight: bold;
+}
+.prdprice{
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: px;
+}
+
+:root{
+  --pearl-1:#ffffff;
+  --pearl-2:#f3ede0;  
+  --pearl-3:#ddd2bd;
+  --silver-1:#f4f4f4; 
+  --silver-2:#c9c9c9; 
+  --silver-3:#9b9b9b;
+  --frost-1:#ffffff;  
+  --frost-2:#e8eef5;  
+  --frost-3:#c3cfdd;
+}
+
+.size-box{ position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-left: 20px;
+}
+.size-box input{ position: absolute;
+  opacity: 0;
+  
+}
+.size-box label{
+  min-width: 46px;
+  color: white;
+  padding: 11px 6px;
+  border: 2px solid var(--light-gold);
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.size label::selection {
+  background: var(--gold);
+  color: black;
+}
+.size-box input:checked + label{
+  background: linear-gradient(135deg, 
+    var(--light-gold), 30%,
+    black, 
+    var(--purple) );
+  color: antiquewhite;
+}
+
+.plus, .count, .minus{
+  display: block;
+  min-width: 46px;
+  background: linear-gradient(135deg, 
+      var(--light-gold), 
+      black,
+      var(--purple));
+  color: antiquewhite;
+  padding: 11px 6px;
+  border: 2px solid black;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+.plus:active,
+.minus:active,
+.count:active{
+  top: 0;
+}
+.unit{
+  display: flex;
+  align-items: center;
+}
+
+
+.buy button{
+  background: linear-gradient(135deg, 
+    var(--light-gold),
+    black, 80%,
+    var(--purple) );
+  text-align: center;
+  padding: 3px;
+  color: antiquewhite;
+  border-radius: 5px;
+  width: 100%;
+  font-size: 24px;
+  margin-top: 20px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  border: none;
+}
+button:active{ position: relative;
+  top: -5px;
+}
+/* =====================================================
+   productres.css
+   The product page (product.html): the big picture and
+   the text, for every screen size EXCEPT the 450px phone.
+
+   Link it AFTER shopres.css: that file holds the --text
+   number used here (1 = the 450px size).
+
+   Nothing in this file touches 361px - 450px, so the
+   450px phone keeps exactly the look from productbody.css.
+   ===================================================== */
+
+
+/* ---------- 1. SHARED RULES ----------
+   The comma means "OR": 451px and wider, OR 360px and smaller. */
+
+@media (min-width: 451px), (max-width: 360px) {
+
+  body[data-page="product"] {
+    max-width: var(--page-width);   /* the page gets wider on wider screens... */
+    margin: 0 auto;                 /* ...and stays in the middle */
+  }
+
+  .imgprd {
+    height: var(--pic-height);      /* the picture gets taller to match the wider page */
+  }
+
+  p {
+    font-size: calc(20px * var(--text));
+  }
+
+  .prdprice {
+    font-size: calc(18px * var(--text));
+  }
+
+  .size-box label,
+  .plus,
+  .count,
+  .minus {
+    font-size: calc(18px * var(--text));
+    min-width: calc(46px * var(--text));
+  }
+
+  .buy button {
+    font-size: calc(24px * var(--text));
+  }
+}
+
+
+/* ---------- 2. PAGE WIDTH AND PICTURE HEIGHT ----------
+   A later block wins over an earlier one, so a screen always
+   ends up with the last block that fits it.
+   (The picture's width is the page width minus the padding,
+   so a wider page also means a wider picture.)             */
+
+/* 451px to 574px */
+@media (min-width: 451px) {
+  :root {
+    --page-width: 100%;
+    --pic-height: 400px;       /* was 350px */
+  }
+}
+
+/* 575px to 799px */
+@media (min-width: 575px) {
+  :root {
+    --page-width: 700px;
+    --pic-height: 440px;
+  }
+}
+
+/* 800px to 899px */
+@media (min-width: 800px) {
+  :root {
+    --page-width: 760px;
+    --pic-height: 500px;
+  }
+}
+
+/* 900px to 1799px */
+@media (min-width: 900px) {
+  :root {
+    --page-width: 880px;
+    --pic-height: 580px;
+  }
+}
+
+/* 1800px and wider */
+@media (min-width: 1800px) {
+  :root {
+    --page-width: 1100px;
+    --pic-height: 700px;
+  }
+}
+
+/* 300px to 360px */
+@media (max-width: 360px) {
+  :root {
+    --page-width: 100%;
+    --pic-height: 250px;       /* smaller than the 350px on the 450px phone */
+  }
+}
+
+/* under 300px (comes after the block above, so it wins) */
+@media (max-width: 299px) {
+  :root {
+    --pic-height: 190px;
+  }
+}

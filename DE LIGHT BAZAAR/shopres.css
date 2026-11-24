@@ -1,0 +1,153 @@
+/* =====================================================
+   shopres.css
+   Sizes shared by the home page, the category pages
+   (wears, clothing, dph) and the product page, for every
+   screen size EXCEPT the 450px phone screen.
+
+   Nothing in this file touches 361px - 450px, so the
+   450px phone keeps exactly its old look.
+
+   Link it AFTER screenres.css on the category pages, and
+   BEFORE indexres.css / productres.css.
+   ===================================================== */
+
+
+/* ---------- 1. THE TWO SIZE NUMBERS ----------
+   Every size in the responsive files is the 450px size
+   multiplied by one of these two numbers:
+     --scale : header, nav, search, cart, top cards, hamburger
+     --text  : product lists, headings, category tabs, product page text
+   1 = the same size as on your 450px phone.
+   Below 1 = smaller, above 1 = bigger.
+   A later block wins over an earlier one, so a screen ends up
+   with the last block that fits it.                          */
+
+/* 451px to 574px */
+@media (min-width: 451px) {
+  :root { --scale: 1.1; --text: 1.05; }
+}
+
+/* 575px to 799px */
+@media (min-width: 575px) {
+  :root { --scale: 1.4; --text: 1.15; }
+}
+/* 800px to 899px */
+@media (min-width: 800px) {
+  :root { --scale: 1.6; --text: 1.25; }
+}
+
+/* 900px to 1799px */
+@media (min-width: 900px) {
+  :root { --scale: 1.9; --text: 1.4; }
+}
+
+/* 1800px and wider */
+@media (min-width: 1800px) {
+  :root { --scale: 2.6; --text: 1.9; }
+}
+
+/* 300px to 360px: smaller than the 450px phone */
+@media (max-width: 360px) {
+  :root { --scale: 0.75; --text: 0.75; }
+}
+
+/* under 300px: smaller again (comes after the block above, so it wins) */
+@media (max-width: 299px) {
+  :root { --scale: 0.6; --text: 0.6; }
+}
+
+
+/* ---------- 2. SHARED RULES ----------
+   The comma means "OR": 451px and wider, OR 360px and smaller. */
+
+@media (min-width: 451px), (max-width: 360px) {
+
+  /* ----- HAMBURGER on the category pages: always top left ----- */
+
+  body:not([data-page="index"]) {
+    position: relative;        /* the hamburger is measured from the top-left corner of the page */
+  }
+
+  body:not([data-page="index"]) .hamburger {
+    position: absolute;
+    top: 15px;                 /* fixed top and left: it can never drop to the bottom of the page */
+    left: 10px;
+    margin: 0;
+    width: calc(25px * var(--scale));
+    height: calc(25px * var(--scale));
+  }
+
+
+  /* ----- CATEGORY PAGES: the title bar and the tabs ----- */
+
+  body:not([data-page="index"]) .prdwrap {
+    height: calc(40px * var(--text));
+  }
+
+  body:not([data-page="index"]) .prd {
+    font-size: calc(24px * var(--text));
+    margin-top: calc(7px * var(--text));
+  }
+
+  .category label {
+    font-size: calc(16px * var(--text));
+  }
+
+
+  /* ----- HOME PAGE: the PRODUCTS heading ----- */
+
+  [data-page="index"] .prd {
+    font-size: calc(30px * var(--text));
+  }
+
+  [data-page="index"] .scroll {
+    margin-top: calc(25px * var(--text));   /* more room under the bigger heading */
+  }
+
+
+  /* ----- PRODUCT LIST (home page and category pages) ----- */
+
+  .prdname,
+  .order p,
+  .prdcard .buy,
+  .prdcard .add {
+    font-size: calc(18px * var(--text));    /* name, price, stock and both buttons */
+  }
+
+  .prdimg {
+    height: calc(40px * var(--text));
+  }
+
+  .scroll {
+    height: calc(700px * var(--text));
+  }
+}
+
+
+/* ---------- 3. TWO COLUMNS from 575px up ---------- */
+
+@media (min-width: 575px) {
+
+  .scroll {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);  /* two columns of products */
+    gap: 20px;
+    align-content: start;
+  }
+
+  .scroll .line {
+    display: none;             /* the lines between products would take up grid spots */
+  }
+
+  .prdcard {
+    min-width: 0;              /* lets a long name wrap instead of pushing the column wider */
+  }
+
+  .prdimg {
+    height: calc((100vw - 110px) * 0.375);  /* the picture follows the width of its column (4 : 3) */
+  }
+
+  body:not([data-page="index"]) .prdimg {
+    height: calc((min(100vw, 1700px) - 110px) * 0.375);  /* the category pages stop growing at 1700px wide, so the pictures do too */
+  }
+}

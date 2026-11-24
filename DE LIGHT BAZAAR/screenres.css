@@ -1,0 +1,131 @@
+/* =====================================================
+   indexres.css
+   Home page header, title, nav, search, cart and top
+   products cards for every screen size EXCEPT the 450px
+   phone screen.
+
+   Link it AFTER shopres.css: that file holds the --scale
+   number used here (1 = the 450px size).
+
+   Nothing in this file touches 361px - 450px, so the
+   450px phone keeps exactly the look from indexbody.css.
+   ===================================================== */
+
+
+/* ---------- 1. SHARED RULES ----------
+   The comma in the media query means "OR": these rules
+   apply at 451px and wider, OR at 360px and smaller.     */
+
+@media (min-width: 451px), (max-width: 360px) {
+
+  /* ----- TITLE: DE, LIGHT and BAZAAR SHOPPING together in the middle ----- */
+
+  .header {
+    position: relative;                     /* lets the title fill the header */
+    height: calc(45px * var(--scale));      /* the 450px height times the screen number */
+  }
+
+  .header h1 {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;                  /* the title box fills the whole header */
+    margin: 0;                 /* cancel the old margin-top and margin-left */
+    padding: 0 calc(18px + 25px * var(--scale));  /* same room on both sides, so the title is in the exact middle */
+    box-sizing: border-box;    /* padding counts inside the width, so nothing sticks out */
+    display: flex;             /* DE, LIGHT and BAZAAR SHOPPING become three blocks in a row */
+    justify-content: center;   /* the three blocks sit together in the middle */
+    align-items: center;       /* and in the middle of the header's height */
+    gap: calc(16px * var(--scale));  /* the same space between each block */
+    white-space: nowrap;       /* never break the title onto a second line */
+    font-size: calc(32px * var(--scale));    /* DE and LIGHT (LIGHT inherits it) */
+  }
+
+  .bazaar {
+    font-size: calc(14px * var(--scale));
+  }
+
+  .header .hamburger {         /* keeps the hamburger in the middle of the header's height */
+    top: 50%;
+    margin-top: 0;
+    transform: translateY(-50%);
+    width: calc(25px * var(--scale));
+    height: calc(25px * var(--scale));
+  }
+
+
+  /* ----- NAV: stretched from left to right ----- */
+
+  .nav {
+    box-sizing: border-box;    /* the nav is exactly as wide as the header above it */
+    height: calc(39px * var(--scale));
+    padding: 2px calc(12px * var(--scale));
+    justify-content: space-between;  /* HOME ... PRODUCT ... SUPPORT ... ABOUT ... cart, equal gaps */
+    gap: 0;                    /* cancel the old 1rem gap */
+  }
+
+  .nav a {
+    margin-left: 0;            /* the space between links now comes from space-between */
+    font-size: calc(16px * var(--scale));
+  }
+
+  .carticon {
+    width: calc(50px * var(--scale));
+    height: calc(50px * var(--scale));
+  }
+
+  .count2 {                    /* the number on the cart */
+    font-size: calc(14px * var(--scale));
+    margin-left: calc(31px * var(--scale));
+  }
+
+
+  /* ----- SEARCH: all the way to the right ----- */
+
+  .sbar {
+    margin-left: auto;         /* auto takes all the free space on the left, pushing the search right */
+    margin-right: 0;
+    margin-top: calc(10px * var(--scale));
+    margin-bottom: calc(10px * var(--scale));
+    width: calc(264px * var(--scale));
+    max-width: 100%;
+    height: calc(30px * var(--scale));
+  }
+
+  .searchbar input[type="text"] {
+    font-size: calc(14px * var(--scale));
+  }
+
+  .search {                    /* the magnifier button */
+    width: calc(60px * var(--scale));
+    height: calc(28px * var(--scale));
+  }
+
+
+  /* ----- HEADING and TOP PRODUCTS cards ----- */
+
+  .top {
+    font-size: calc(32px * var(--text));   /* the TOP Products heading */
+  }
+
+  .card1 {
+    zoom: var(--scale);        /* scales the whole card (picture, name, price) together */
+  }
+}
+
+
+/* ---------- 2. BAZAAR SHOPPING on two lines ----------
+   On 360px and smaller, and from 451px to 799px, the title is
+   too wide for one line, so BAZAAR SHOPPING sits on two lines:
+        BAZAAR
+        SHOPPING
+   From 800px up there is room, so it stays on one line.      */
+
+@media (max-width: 360px), (min-width: 451px) and (max-width: 799px) {
+  .bazaar {
+    white-space: normal;
+    width: min-content;
+    text-align: right;
+    line-height: 1.1;
+  }
+}

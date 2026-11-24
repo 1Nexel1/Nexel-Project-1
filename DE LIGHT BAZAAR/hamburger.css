@@ -1,0 +1,82 @@
+:root{
+  --L-dark: #2d2d2d;
+  --g-dark: #1f1c17;
+  --g-gold: #0e0d0b;
+}
+.overlay{ position: fixed; 
+  width: 100%;
+  height: 100%;
+  z-index: 98;
+  display: none;
+  background: var(--g-gold);
+  opacity: 0.5;
+  transition: all 0.3s ease;
+}
+.overlay.active{
+  display: block;
+}
+.hammenu{  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 40%;
+  padding: 15px;
+  z-index: 99;
+  background: linear-gradient(135deg, var(--L-dark), var(--g-dark),var(--g-gold) );
+  border-right: 1px solid #e4cd86;
+  
+  transform: translateX(-100%);
+  transition: all 0.5s ease-in-out;
+
+}
+.hammenu.active{
+  transform: translateX(0);
+
+}
+
+.menu{
+  margin-top: 60%;
+
+
+}
+
+.menu p, .menu a{
+  
+  color: antiquewhite;
+  margin-top: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  
+}
+.whsapp{
+  width: 50px;
+  height: 50px;
+}
+#reset{ position: relative;
+  color: black;
+  z-index: 99;
+
+}
+
+.logo p{
+  color: antiquewhite;
+  margin: 0;
+  text-align: center;
+  margin-top: 20px;
+  font-weight: bold;
+  
+}
+.logo .DE{
+  font-size: 34px;
+}
+.logo span{
+  color: black;
+}
+.logo .Baz{
+  font-size: 32px;
+  margin-bottom: 30px;
+}
+.logo .Shp{ 
+  font-size: 22px;
+  
+}

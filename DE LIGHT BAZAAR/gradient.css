@@ -1,0 +1,22 @@
+:root{
+  --light-gold:#d6b46c;
+  --dark-gold:#ba9048;
+  --gold:#e4cd86;
+  --purple:#7b2d4a;
+}
+:root{
+  --L-dark: #2d2d2d;
+  --g-dark: #1f1c17;
+  --g-gold: #0e0d0b;
+}
+  
+h1, .bazaar, .light, h4, .prd, .nav a{
+  display: inline-block;
+  background: linear-gradient(135deg, var(--light-gold), var(--dark-gold), var(--gold) );
+  background-clip: text;
+  color: transparent;
+}
+
+.ted h3{
+  display: flex;
+}
